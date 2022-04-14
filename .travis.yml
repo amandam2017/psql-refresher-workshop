@@ -4,12 +4,14 @@ node_js:
   - "v12"
 
 env:
-  - const DATABASE_URL = process.env.DATABASE_URL
+  - DATABASE_URL=postgresql://postgres@localhost:5432/garments_app;
 
 before_script:
-  # - psql -c "CREATE USER amanda:@262632 'amanda';" -U postgres
+  - npm install
   - psql -c 'create database  garments_app' -U postgres
   - psql -U postgres -d garments_app -a -f sql/garment.sql
+  - psql -U postgres -d garments_app -a -f sql/data.sql
+
 
 services:
   - postgresql  
