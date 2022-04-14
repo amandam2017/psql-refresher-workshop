@@ -4,7 +4,7 @@ node_js:
   - "v12"
 
 env:
-  - DATABASE_URL=postgres://amanda:@262632@localhost:5432/garments_app
+  - const DATABASE_URL = process.env.DATABASE_URL
 
 before_script:
   - psql -c 'create database  garments_app' -U postgres
