@@ -104,16 +104,16 @@ describe('As part of the sql refresh workshop', async () => {
 
 		const expectedResult = [
 			{
-				count: '15',
-				gender: 'Male'
+				count: '4',
+				gender: 'Unisex'
 			},
 			{
 				count: '16',
 				gender: 'Female'
 			},
 			{
-				count: '4',
-				gender: 'Unisex'
+				count: '15',
+				gender: 'Male'
 			}
 		]
 		assert.deepStrictEqual(expectedResult, garmentsGrouped)
