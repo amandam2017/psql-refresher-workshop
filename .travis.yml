@@ -7,7 +7,7 @@ env:
   - const DATABASE_URL = process.env.DATABASE_URL
 
 before_script:
-  - psql -c "CREATE USER amanda:@262632 'amanda';" -U postgres
+  - psql -c "CREATE USER amanda @262632 'amanda';" -U postgres
   - psql -c 'create database  garments_app' -U postgres
   - psql -U postgres -d garments_app -a -f sql/garment.sql
 
