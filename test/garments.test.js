@@ -41,7 +41,6 @@ describe('As part of the sql refresh workshop', async () => {
 	it('you should be able to find all the Summer garments', async () => {
 		// add some code below
 		const result = await db.one(`select count(*) from garment WHERE season = $1`, 'Summer');
-		console.log('???'+result);
 		// no changes below this line in this function
 		assert.equal(12, result.count);
 	});
@@ -56,7 +55,6 @@ describe('As part of the sql refresh workshop', async () => {
 	it('you should be able to find all the Winter Male garments', async () => {
 		// change the code statement below
 		const result = await db.one(`Select count(*) FROM garment WHERE season = $1 AND gender = $2`, ['Winter', 'Male']);
-		console.log(result);
 		// no changes below this line in this function
 		assert.equal(3, result.count);
 	});
@@ -65,10 +63,12 @@ describe('As part of the sql refresh workshop', async () => {
 
 		// use db.one with an update sql statement
 		
-		// write your code above this line
+		// write your code above this line Blue Hoodie
+		await db.none(`UPDATE garment set gender = $1 where description = $2`, ['Unisex', 'Red hooded jacket']);
 
 		const gender_sql = 'select gender from garment where description = $1'
 		const gender = await db.one(gender_sql, ['Red hooded jacket'], r => r.gender);
+		console.log('???'+gender);
 		assert.equal('Unisex', gender);
 
 	});
@@ -77,6 +77,15 @@ describe('As part of the sql refresh workshop', async () => {
 
 		// use db.none - change code below here...
 
+		// add for Females
+		await db.one(`insert into garment(description, season, gender) values ($1,$2,$3)`, ['Black Coat)', 'Winter', 'Female']);
+		await db.one(`insert into garment(description, season, gender) values ($1,$2,$3)`, ['Red Mini Skirt','Summer', 'Female']);
+		await db.one(`insert into garment(description, season, gender) values ($1,$2,$3)`, ['Strawhat', 'Summer', 'Female']);
+
+		// add for males
+
+		await db.one(`insert into garment(description, img, season, gender, price) values ($1,$2,$3,$4,$5)`, ['Black Bomber', 'bomber-128x128-455120.png', 'Winter', 'Male', '300.00']);
+		await db.one(`insert into garment(description, img, season, gender, price) values ($1,$2,$3,$4,$5)`, ['Long Sleeve Green T-Shirt', 'shirt-128x128-455120.png', 'Summer', 'Male', '250.00']);
 
 		// write your code above this line
 
