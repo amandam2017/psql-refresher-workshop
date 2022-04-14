@@ -68,7 +68,7 @@ describe('As part of the sql refresh workshop', async () => {
 
 		const gender_sql = 'select gender from garment where description = $1'
 		const gender = await db.one(gender_sql, ['Red hooded jacket'], r => r.gender);
-		console.log('???'+gender);
+
 		assert.equal('Unisex', gender);
 
 	});
@@ -99,7 +99,7 @@ describe('As part of the sql refresh workshop', async () => {
 
 		// and below this line for this function will
 		const garmentsGrouped = await db.many(`select count(*), gender FROM garment GROUP BY gender`);
-		console.log({garmentsGrouped});
+
 		// write your code above this line
 
 		const expectedResult = [
