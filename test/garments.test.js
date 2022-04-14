@@ -78,9 +78,9 @@ describe('As part of the sql refresh workshop', async () => {
 		// use db.none - change code below here...
 
 		// add for Females
-		await db.one(`insert into garment(description, season, gender) values ($1,$2,$3)`, ['Black Coat)', 'Winter', 'Female']);
-		await db.one(`insert into garment(description, season, gender) values ($1,$2,$3)`, ['Red Mini Skirt','Summer', 'Female']);
-		await db.one(`insert into garment(description, season, gender) values ($1,$2,$3)`, ['Strawhat', 'Summer', 'Female']);
+		await db.none(`insert into garment(description, season, gender) values ($1,$2,$3,$4,$5)`, ['Black Coat', 'coat-128x128-455120.png', 'Winter', 'Female']);
+		await db.none(`insert into garment(description, season, gender) values ($1,$2,$3,$4,$5)`, ['Red Mini Skirt', 'skirt-128x128-455120.png','Summer', 'Female']);
+		await db.none(`insert into garment(description, season, gender) values ($1,$2,$3,$4,$5)`, ['Strawhat', 'hat-128x128-455120.png', 'Summer', 'Female']);
 
 		// add for males
 
@@ -124,7 +124,7 @@ describe('As part of the sql refresh workshop', async () => {
 	it('you should be able to remove all the Unisex garments', async () => {
 
 		// and below this line for this function will
-
+		await db.none(`DELETE from garment where gender = $1`, 'Unisex');
 		// write your code above this line
 
 		const gender_count_sql = 'select count(*) from garment where gender = $1'
