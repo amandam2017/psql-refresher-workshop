@@ -78,14 +78,14 @@ describe('As part of the sql refresh workshop', async () => {
 		// use db.none - change code below here...
 
 		// add for Females
-		await db.none(`insert into garment(description, season, gender) values ($1,$2,$3,$4,$5)`, ['Black Coat', 'coat-128x128-455120.png', 'Winter', 'Female']);
-		await db.none(`insert into garment(description, season, gender) values ($1,$2,$3,$4,$5)`, ['Red Mini Skirt', 'skirt-128x128-455120.png','Summer', 'Female']);
-		await db.none(`insert into garment(description, season, gender) values ($1,$2,$3,$4,$5)`, ['Strawhat', 'hat-128x128-455120.png', 'Summer', 'Female']);
+		await db.none(`insert into garment(description, img, season, gender, price) values ('Black Coat', 'coat-128x128-455120.png', 'Winter', 'Female', '450.00')`);
+		await db.none(`insert into garment(description, img, season, gender, price) values ('Red Mini Skirt', 'skirt-128x128-455120.png','Summer', 'Female', '200.00')`);
+		await db.none(`insert into garment(description, img, season, gender, price) values ('Strawhat', 'hat-128x128-455120.png', 'Summer', 'Female', '120.00')`);
 
 		// add for males
 
-		await db.one(`insert into garment(description, img, season, gender, price) values ($1,$2,$3,$4,$5)`, ['Black Bomber', 'bomber-128x128-455120.png', 'Winter', 'Male', '300.00']);
-		await db.one(`insert into garment(description, img, season, gender, price) values ($1,$2,$3,$4,$5)`, ['Long Sleeve Green T-Shirt', 'shirt-128x128-455120.png', 'Summer', 'Male', '250.00']);
+		await db.one(`insert into garment(description, img, season, gender, price) values ('Black Bomber', 'bomber-128x128-455120.png', 'Winter', 'Male', '300.00')`);
+		await db.one(`insert into garment(description, img, season, gender, price) values ('Long Sleeve Green T-Shirt', 'shirt-128x128-455120.png', 'Summer', 'Male', '250.00')`);
 
 		// write your code above this line
 
