@@ -55,7 +55,8 @@ describe('As part of the sql refresh workshop', async () => {
 
 	it('you should be able to find all the Winter Male garments', async () => {
 		// change the code statement below
-		const result = await db.many(`Select count(*) FROM garment WHERE season = $1 AND gender = $2`, ['Winter'], ['Male']);
+		const result = await db.one(`Select count(*) FROM garment WHERE season = $1 AND gender = $2`, ['Winter', 'Male']);
+		console.log(result);
 		// no changes below this line in this function
 		assert.equal(3, result.count);
 	});
@@ -63,7 +64,7 @@ describe('As part of the sql refresh workshop', async () => {
 	it('you should be able to change a given Male garment to a Unisex garment', async () => {
 
 		// use db.one with an update sql statement
-
+		
 		// write your code above this line
 
 		const gender_sql = 'select gender from garment where description = $1'
